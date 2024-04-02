@@ -5,9 +5,34 @@ from . import models
 
 
 class ContactForm(forms.ModelForm):
+    first_name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'class': 'classe-a classe-b',
+                'placeholder': 'Aqui veio do init',
+            }
+        ),
+        label='Primeiro nome',
+        help_text='Texto de ajuda para seu usuário',
+    )
+
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+
     class Meta:
         model = models.Contact
-        fields = 'first_name', 'last_name', 'phone'
+        fields = (
+            'first_name', 'last_name', 'phone'
+        )
+        # widgets = {
+        #     'first_name': forms.TextInput(
+        #         attrs={
+        #             'class': 'classe-a classe-b',
+        #             'placeholder': 'Escreva aqui',
+        #             'help_text': ''
+        #         }
+        #     )
+        # }
 
     def clean(self):
         # cleaned_data = self.cleaned_data
