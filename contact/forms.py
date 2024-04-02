@@ -66,7 +66,7 @@ class RegisterForm(UserCreationForm):
         model = User
         fields = (
             'first_name', 'last_name', 'email',
-            'username', 'password', 'password2',
+            'username', 'password1', 'password2',
         )
 
     def clean_email(self):
